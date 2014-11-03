@@ -37,6 +37,17 @@ describe('spellcheck', function () {
 
             expect(viewable).to.be.true;
         });
+
+        it('should not pass a nested element in a script', function () {
+            var viewable = spellcheck.isViewableElement({
+                type: 'script',
+                children: [{
+                    type: 'text'
+                }]
+            });
+
+            expect(viewable).to.be.false;
+        });
     });
 
     describe('isViewableAttrib', function () {
