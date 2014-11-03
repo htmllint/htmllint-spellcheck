@@ -1,6 +1,7 @@
 {
   "name": "htmllint-spellcheck",
   "main": "lib/index.js",
+  "version": "0.0.0",
   "license": "ISC",
   "dependencies": {
     "aspell": "^0.1.0",
