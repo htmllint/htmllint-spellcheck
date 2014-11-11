@@ -17,9 +17,31 @@ $ npm install -D htmllint-spellcheck
 
 ## Usage
 
-If you are using the `grunt` task or cli interface, just add this to the
-plugin list in the respective configuration (check the readmes' of those
-projects for information on how to do this).
+If you are using `grunt`, then you should install this module as a dependency:
+
+```sh
+$ npm install -D htmllint-spellcheck
+```
+
+You also need to install [aspell](http://aspell.net/) to use this module.
+
+After doing so, add the following to your `Gruntfile.js`:
+
+```javascript
+grunt.initConfig({
+// ... wherever your target is for htmllint that you want to add the plugin to:
+  htmllint: {
+    a_target: {
+	  options: {
+	    // add the 'htmllint-spellcheck' plugin to the list
+	    plugins: ['htmllint-spellcheck'],
+		// ... rest of your options
+		spellcheck: true
+    }
+  }
+// ...
+});
+```
 
 If you are using the `htmllint` npm module, you can add the plugin to a
 linter instance by doing the following:
