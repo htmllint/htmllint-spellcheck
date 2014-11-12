@@ -88,5 +88,23 @@ describe('spellcheck', function () {
 
             expect(promise).to.eventually.have.length(1);
         });
+
+        it('should handle a large number of requests', function () {
+            // problem first found in github issue #1
+            expect(function spawnManyRequests() {
+                var promise = null,
+                    input = '';
+
+                for (var k = 0; k < 10000; ++k) {
+                    input += 'some text to spell check ';
+                }
+
+                for (var i = 0; i < 10000; ++i) {
+                    promise = spellcheck.spellcheck(input, [0, 0]);
+
+                    expect(promise).to.eventually.have.length(0);
+                }
+            }).to.not.throw();
+        });
     });
 });
